@@ -2,6 +2,9 @@ package com.sakina.braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
@@ -13,6 +16,8 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -105,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             {
                 timeView.setText("00:00");
                 Toast.makeText(MainActivity.this, "Time Up!", Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(getApplicationContext(),scoreActivity.class);
+                intent.putExtra("newScore",score);
+                startActivity(intent);
                 score=0;
                 no_of_ques=0;
                 setscoreView();
